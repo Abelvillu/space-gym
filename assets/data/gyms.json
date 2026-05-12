@@ -1,0 +1,52 @@
+[
+{
+"name":"SPACE GYM Barcelona Elite",
+"city":"Barcelona",
+"coords":[41.3874,2.1686]
+},
+{
+"name":"SPACE GYM Madrid Luxury",
+"city":"Madrid",
+"coords":[40.4168,-3.7038]
+},
+{
+"name":"SPACE GYM Sevilla Wellness",
+"city":"Sevilla",
+"coords":[37.3891,-5.9845]
+},
+{
+"name":"SPACE GYM Tenerife Rooftop",
+"city":"Tenerife",
+"coords":[28.2916,-16.6291]
+},
+{
+"name":"SPACE GYM Bilbao Premium",
+"city":"Bilbao",
+"coords":[43.2630,-2.9350]
+},
+{
+"name":"SPACE GYM Valencia Luxury",
+"city":"Valencia",
+"coords":[39.4699,-0.3763]
+},
+{
+"name":"SPACE GYM Málaga Beach",
+"city":"Málaga",
+"coords":[36.7213,-4.4214]
+},
+{
+"name":"SPACE GYM Zaragoza",
+"city":"Zaragoza",
+"coords":[41.6488,-0.8891]
+},
+{
+"name":"SPACE GYM Mallorca",
+"city":"Mallorca",
+"coords":[39.5696,2.6502]
+},
+{
+"name":"SPACE GYM Ibiza",
+"city":"Ibiza",
+"coords":[38.9067,1.4206]
+}
+]

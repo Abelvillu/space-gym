@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPACE GYM Clubs</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#020617;
+overflow:hidden;
+}
+
+.sidebar{
+position:absolute;
+left:0;
+top:0;
+width:430px;
+height:100vh;
+background:#050b1a;
+z-index:999;
+padding:30px;
+overflow-y:auto;
+border-right:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+width:100%;
+border-radius:25px;
+margin-bottom:25px;
+}
+
+.search-box{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.search-box input{
+flex:1;
+padding:18px;
+border:none;
+outline:none;
+border-radius:16px;
+background:#091326;
+color:white;
+font-size:1rem;
+}
+
+.search-box button{
+width:60px;
+border:none;
+border-radius:16px;
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+color:white;
+font-size:1.2rem;
+}
+
+.map-buttons{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-bottom:25px;
+}
+
+.map-btn{
+padding:18px;
+border:none;
+border-radius:18px;
+font-weight:700;
+background:#091326;
+color:white;
+cursor:pointer;
+transition:.3s;
+}
+
+.map-btn:hover{
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+}
+
+.club-card{
+background:#091326;
+border-radius:28px;
+overflow:hidden;
+margin-bottom:25px;
+cursor:pointer;
+transition:.3s;
+border:2px solid transparent;
+}
+
+.club-card:hover{
+transform:translateY(-5px);
+border-color:#00c6ff;
+}
+
+.club-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.club-info{
+padding:25px;
+color:white;
+}
+
+.club-info h2{
+font-size:2rem;
+font-weight:900;
+margin-bottom:15px;
+}
+
+.club-info p{
+color:#cbd5e1;
+font-size:1rem;
+line-height:1.8;
+}
+
+.tags{
+display:flex;
+gap:10px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.tag{
+padding:10px 16px;
+background:#020617;
+border-radius:999px;
+font-size:.9rem;
+font-weight:700;
+}
+
+#map{
+width:calc(100% - 430px);
+height:100vh;
+margin-left:430px;
+}
+
+.leaflet-popup-content-wrapper{
+background:#091326;
+color:white;
+border-radius:20px;
+}
+
+.leaflet-popup-tip{
+background:#091326;
+}
+
+.popup-title{
+font-size:1.3rem;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.popup-address{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<img
+src="assets/images/logo.png"
+class="logo">
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Buscar ciutat o club">
+
+<button onclick="searchClub()">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+</button>
+
+</div>
+
+<div class="map-buttons">
+
+<button
+class="map-btn"
+onclick="changeMap('dark')">
+
+🌑 Dark Luxury
+
+</button>
+
+<button
+class="map-btn"
+onclick="changeMap('light')">
+
+🗺️ Light Map
+
+</button>
+
+<button
+class="map-btn"
+onclick="changeMap('satellite')">
+
+🛰️ Satellite
+
+</button>
+
+</div>
+
+<!-- BARCELONA -->
+
+<div
+class="club-card"
+onclick="focusClub('Barcelona Elite',41.3937,2.1647,'Avinguda Diagonal 640, Barcelona')">
+
+<img
+src="assets/images/space-gym-barcelonadiagonal.png">
+
+<div class="club-info">
+
+<h2>Barcelona Elite</h2>
+
+<p>
+
+Avinguda Diagonal 640<br>
+Barcelona
+
+</p>
+
+<div class="tags">
+
+<div class="tag">24/7</div>
+<div class="tag">Spa</div>
+<div class="tag">Luxury</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BARCELONA SANTS -->
+
+<div
+class="club-card"
+onclick="focusClub('Barcelona Sants',41.3791,2.1400,'Carrer de Sants 320, Barcelona')">
+
+<img
+src="assets/images/space-gym-barcelonasants.png">
+
+<div class="club-info">
+
+<h2>Barcelona Sants</h2>
+
+<p>
+
+Carrer de Sants 320<br>
+Barcelona
+
+</p>
+
+<div class="tags">
+
+<div class="tag">Recovery</div>
+<div class="tag">Premium</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MADRID -->
+
+<div
+class="club-card"
+onclick="focusClub('Madrid Serrano',40.4300,-3.6883,'Calle Serrano 88, Madrid')">
+
+<img
+src="assets/images/space-gym-madridserrano.png">
+
+<div class="club-info">
+
+<h2>Madrid Serrano</h2>
+
+<p>
+
+Calle Serrano 88<br>
+Madrid
+
+</p>
+
+<div class="tags">
+
+<div class="tag">VIP</div>
+<div class="tag">Wellness</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MADRID GRAN VIA -->
+
+<div
+class="club-card"
+onclick="focusClub('Madrid Gran Via',40.4207,-3.7058,'Gran Via 41, Madrid')">
+
+<img
+src="assets/images/space-gym-madridgranvia.png">
+
+<div class="club-info">
+
+<h2>Madrid Gran Via</h2>
+
+<p>
+
+Gran Via 41<br>
+Madrid
+
+</p>
+
+<div class="tags">
+
+<div class="tag">Spa</div>
+<div class="tag">Luxury</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TENERIFE -->
+
+<div
+class="club-card"
+onclick="focusClub('Tenerife Costa Adeje',28.0909,-16.7310,'Costa Adeje 14, Tenerife')">
+
+<img
+src="assets/images/space-gym-tenerife.png">
+
+<div class="club-info">
+
+<h2>Tenerife Costa Adeje</h2>
+
+<p>
+
+Costa Adeje 14<br>
+Tenerife
+
+</p>
+
+<div class="tags">
+
+<div class="tag">Ocean View</div>
+<div class="tag">Premium</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MAP -->
+
+<div id="map"></div>
+
+<script
+src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+const map = L.map('map').setView([40.4168,-3.7038],6);
+
+const darkLayer = L.tileLayer(
+'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+);
+
+const lightLayer = L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+);
+
+const satelliteLayer = L.tileLayer(
+'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+);
+
+darkLayer.addTo(map);
+
+let currentLayer = darkLayer;
+
+function changeMap(type){
+
+map.removeLayer(currentLayer);
+
+if(type==="dark"){
+currentLayer = darkLayer;
+}
+
+if(type==="light"){
+currentLayer = lightLayer;
+}
+
+if(type==="satellite"){
+currentLayer = satelliteLayer;
+}
+
+currentLayer.addTo(map);
+
+}
+
+function focusClub(name,lat,lng,address){
+
+map.flyTo([lat,lng],16,{
+duration:1.5
+});
+
+L.popup()
+.setLatLng([lat,lng])
+.setContent(`
+
+<div style="width:250px;">
+
+<div class="popup-title">
+
+${name}
+
+</div>
+
+<div class="popup-address">
+
+📍 ${address}<br><br>
+
+🏋️ SPACE GYM Luxury Club<br>
+🕒 Obert 24/7
+
+</div>
+
+</div>
+
+`)
+.openOn(map);
+
+}
+
+const clubs = [
+
+["Barcelona Elite",41.3937,2.1647],
+["Barcelona Sants",41.3791,2.1400],
+["Madrid Serrano",40.4300,-3.6883],
+["Madrid Gran Via",40.4207,-3.7058],
+["Tenerife Costa Adeje",28.0909,-16.7310]
+
+];
+
+const gymIcon = L.icon({
+
+iconUrl:'assets/images/logo.png',
+
+iconSize:[55,55],
+
+iconAnchor:[27,55],
+
+popupAnchor:[0,-50]
+
+});
+
+clubs.forEach(club=>{
+
+L.marker(
+[club[1],club[2]],
+{
+icon:gymIcon
+}
+)
+
+.addTo(map)
+
+.bindPopup(club[0]);
+
+});
+
+function searchClub(){
+
+const value =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+clubs.forEach(club=>{
+
+if(club[0].toLowerCase().includes(value)){
+
+map.flyTo([club[1],club[2]],16);
+
+}
+
+});
+
+}
+
+</script>

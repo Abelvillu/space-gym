@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPACE GYM | Luxury Fitness Experience</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:white;
+overflow-x:hidden;
+}
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+z-index:9999;
+padding:20px 70px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(20px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+font-size:2.5rem;
+font-weight:900;
+}
+
+.logo-circle{
+width:65px;
+height:65px;
+border-radius:20px;
+background:linear-gradient(135deg,#00c6ff,#7f39fb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:2rem;
+font-weight:900;
+}
+
+.nav-links{
+display:flex;
+gap:45px;
+align-items:center;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-size:1.1rem;
+font-weight:600;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#00c6ff;
+}
+
+.explore-btn{
+padding:18px 35px;
+border-radius:20px;
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(2,6,23,.88)),
+url('assets/images/fondo-space-gym.png');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 30px;
+}
+
+.hero-content{
+max-width:1000px;
+}
+
+.badge-hero{
+display:inline-block;
+padding:12px 25px;
+background:rgba(255,255,255,.08);
+border-radius:999px;
+margin-bottom:25px;
+font-weight:700;
+backdrop-filter:blur(10px);
+}
+
+.hero h1{
+font-size:6rem;
+font-weight:900;
+line-height:1;
+margin-bottom:30px;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:1.4rem;
+line-height:1.8;
+color:#cbd5e1;
+max-width:850px;
+margin:auto;
+}
+
+.hero-buttons{
+margin-top:45px;
+display:flex;
+gap:25px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero-btn{
+padding:20px 40px;
+border-radius:20px;
+font-weight:700;
+text-decoration:none;
+font-size:1.1rem;
+transition:.4s;
+}
+
+.btn-main{
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+color:white;
+}
+
+.btn-outline{
+border:2px solid rgba(255,255,255,.15);
+color:white;
+}
+
+.stats{
+padding:140px 70px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
+
+.stat-card{
+background:#051030;
+border-radius:35px;
+padding:70px 40px;
+text-align:center;
+cursor:pointer;
+transition:.4s;
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+}
+
+.stat-card h2{
+font-size:5rem;
+font-weight:900;
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.stat-card p{
+font-size:1.6rem;
+margin-top:20px;
+}
+
+.section{
+padding:120px 70px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h2{
+font-size:4rem;
+font-weight:900;
+}
+
+.section-title h2 span{
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+}
+
+.feature-card{
+background:#051030;
+padding:50px;
+border-radius:35px;
+transition:.4s;
+}
+
+.feature-card:hover{
+transform:translateY(-10px);
+}
+
+.feature-icon{
+width:90px;
+height:90px;
+border-radius:25px;
+background:linear-gradient(135deg,#00c6ff,#7f39fb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:2rem;
+margin-bottom:30px;
+}
+
+.feature-card h3{
+font-size:2rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.feature-card p{
+font-size:1.1rem;
+line-height:1.9;
+color:#cbd5e1;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.gallery img{
+width:100%;
+height:350px;
+object-fit:cover;
+border-radius:35px;
+}
+
+.footer{
+padding:90px 70px;
+background:#01040f;
+margin-top:120px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.footer h3{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+.footer p{
+color:#94a3b8;
+line-height:2;
+}
+
+.modal-content{
+background:#051030;
+border-radius:35px;
+color:white;
+max-height:90vh;
+overflow-y:auto;
+}
+
+.modal-img{
+width:100%;
+height:500px;
+object-fit:cover;
+border-radius:30px;
+display:block;
+margin:auto;
+}
+
+.review-card{
+background:#020617;
+padding:35px;
+border-radius:25px;
+}
+
+.review-card h4{
+margin-bottom:15px;
+}
+
+.review-card p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+
+<img
+src="assets/images/logo.png"
+style="
+height:70px;
+width:auto;
+object-fit:contain;
+">
+
+</div>
+
+<div class="nav-links">
+
+<a href="#">Inici</a>
+<a href="clubs.html">Clubs</a>
+<a href="#">Plans</a>
+<a href="#">Tecnologia</a>
+<a href="#">Contacte</a>
+
+<a
+href="clubs.html"
+class="explore-btn">
+
+Explorar Clubs
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge-hero">
+LUXURY FITNESS EXPERIENCE
+</div>
+
+<h1>
+
+El futur del
+<span>fitness premium</span>
+
+</h1>
+
+<p>
+
+SPACE GYM redefineix l’experiència fitness amb clubs luxury,
+wellness premium,
+spa recovery
+i cartografia interactiva avançada.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="clubs.html"
+class="hero-btn btn-main">
+
+Explorar Clubs
+
+</a>
+
+<a
+href="#experience"
+class="hero-btn btn-outline">
+
+Descobrir Experiència
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stats-grid">
+
+<div
+class="stat-card"
+data-bs-toggle="modal"
+data-bs-target="#clubsModal">
+
+<h2>5</h2>
+
+<p>Clubs Premium</p>
+
+</div>
+
+<div
+class="stat-card"
+data-bs-toggle="modal"
+data-bs-target="#hoursModal">
+
+<h2>24/7</h2>
+
+<p>Accés Premium</p>
+
+</div>
+
+<div
+class="stat-card"
+data-bs-toggle="modal"
+data-bs-target="#reviewsModal">
+
+<h2>95%</h2>
+
+<p>Satisfacció Clients</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section
+class="section"
+id="experience">
+
+<div class="section-title">
+
+<h2>
+
+Experiència
+<span>Luxury Fitness</span>
+
+</h2>
+
+</div>
+
+<div class="features">
+
+<!-- EQUIPAMENT -->
+
+<div
+class="feature-card"
+data-bs-toggle="modal"
+data-bs-target="#equipamentModal"
+style="cursor:pointer;">
+
+<div class="feature-icon">
+<i class="fa-solid fa-dumbbell"></i>
+</div>
+
+<h3>Equipament Elite</h3>
+
+<p>
+
+Technogym,
+Hammer Strength
+i zones premium luxury.
+
+</p>
+
+</div>
+
+<!-- SPA -->
+
+<div
+class="feature-card"
+data-bs-toggle="modal"
+data-bs-target="#spaModal"
+style="cursor:pointer;">
+
+<div class="feature-icon">
+<i class="fa-solid fa-spa"></i>
+</div>
+
+<h3>Spa & Recovery</h3>
+
+<p>
+
+Saunes,
+crioteràpia,
+wellness recovery
+i experiència exclusiva.
+
+</p>
+
+</div>
+
+<!-- WELLNESS -->
+
+<div
+class="feature-card"
+data-bs-toggle="modal"
+data-bs-target="#wellnessModal"
+style="cursor:pointer;">
+
+<div class="feature-icon">
+<i class="fa-solid fa-heart-pulse"></i>
+</div>
+
+<h3>Wellness Experience</h3>
+
+<p>
+
+Experiència fitness premium
+amb ambient luxury.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- PERSONAL TRAINER -->
+
+<div
+style="
+margin-top:120px;
+background:#051030;
+padding:60px;
+border-radius:40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+">
+
+<img
+src="assets/images/personal-trainer.png"
+style="
+width:100%;
+border-radius:35px;
+height:500px;
+object-fit:cover;
+">
+
+<div>
+
+<h2
+style="
+font-size:4rem;
+font-weight:900;
+margin-bottom:30px;
+">
+
+Entrenador Personal Premium
+
+</h2>
+
+<p
+style="
+font-size:1.3rem;
+line-height:2;
+color:#cbd5e1;
+margin-bottom:40px;
+">
+
+Contracta entrenadors personals
+especialitzats en hipertrofia,
+wellness,
+fitness luxury
+i rendiment esportiu.
+
+</p>
+
+<div
+style="
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:40px;
+">
+
+<div
+style="
+background:#020617;
+padding:25px;
+border-radius:25px;
+flex:1;
+">
+
+<h4>Disponibilitat</h4>
+
+<p>
+06:00 - 23:00
+cada dia
+</p>
+
+</div>
+
+<div
+style="
+background:#020617;
+padding:25px;
+border-radius:25px;
+flex:1;
+">
+
+<h4>Contacte VIP</h4>
+
+<p>
+trainers@spacegym.com
+</p>
+
+</div>
+
+</div>
+
+<button
+class="hero-btn btn-main"
+data-bs-toggle="modal"
+data-bs-target="#trainerModal">
+
+Reservar Trainer
+
+</button>
+
+</div>
+
+</div>
+
+<!-- GALLERY -->
+
+<div class="gallery">
+
+<img
+src="assets/images/spacegym1.png">
+
+<img
+src="assets/images/spacegym2.png">
+
+<img
+src="assets/images/spacegym3.png">
+
+</div>
+
+</section>
+
+<!-- MODAL EQUIPAMENT -->
+
+<div
+class="modal fade"
+id="equipamentModal">
+
+<div class="modal-dialog modal-xl modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Equipament Elite
+</h2>
+
+<img
+src="assets/images/equipament-elite.png"
+class="img-fluid rounded-4 mb-4 modal-img">
+
+<p style="font-size:1.2rem; line-height:2;">
+
+Maquinària premium Technogym,
+Hammer Strength,
+zones luxury,
+pes lliure professional
+i experiència fitness multimilionària.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL SPA -->
+
+<div
+class="modal fade"
+id="spaModal">
+
+<div class="modal-dialog modal-xl modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Spa & Recovery
+</h2>
+
+<img
+src="assets/images/spa-spacegym.png"
+class="img-fluid rounded-4 mb-4 modal-img">
+
+<p style="font-size:1.2rem; line-height:2;">
+
+Zones recovery premium,
+spa luxury,
+crioteràpia,
+saunes
+i relaxació wellness exclusiva.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL WELLNESS -->
+
+<div
+class="modal fade"
+id="wellnessModal">
+
+<div class="modal-dialog modal-xl modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Wellness Experience
+</h2>
+
+<img
+src="assets/images/welnnes-spacegym.png"
+
+<p style="font-size:1.2rem; line-height:2;">
+
+Experiència fitness premium,
+interiors luxury,
+música ambiental,
+wellness exclusiu
+i sensació multimilionària real.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-grid">
+
+<div>
+
+<h3>SPACE GYM</h3>
+
+<p>
+
+La cadena fitness luxury
+amb experiència premium
+i clubs exclusius.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Empresa</h3>
+
+<p>Wellness</p>
+<p>Recovery</p>
+<p>Luxury Clubs</p>
+
+</div>
+
+<div>
+
+<h3>Contacte</h3>
+
+<p>info@spacegym.com</p>
+<p>+34 900 777 999</p>
+
+</div>
+
+<div>
+
+<h3>Experiència</h3>
+
+<p>AI Fitness</p>
+<p>Spa Luxury</p>
+<p>Premium Recovery</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- MODAL CLUBS -->
+
+<div
+class="modal fade"
+id="clubsModal">
+
+<div class="modal-dialog modal-xl modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Clubs premium SPACE GYM
+</h2>
+
+<div class="row g-4">
+
+<!-- BARCELONA -->
+
+<div class="col-lg-4">
+
+<div class="review-card">
+
+<img
+src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop"
+class="img-fluid rounded-4 mb-4">
+
+<h4>Barcelona</h4>
+
+<p>
+
+2 clubs:<br>
+Diagonal<br>
+Sants
+
+</p>
+
+</div>
+
+</div>
+
+<!-- MADRID -->
+
+<div class="col-lg-4">
+
+<div class="review-card">
+
+<img
+src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=800&auto=format&fit=crop"
+class="img-fluid rounded-4 mb-4">
+
+<h4>Madrid</h4>
+
+<p>
+
+2 clubs:<br>
+Serrano<br>
+Gran Via
+
+</p>
+
+</div>
+
+</div>
+
+<!-- TENERIFE -->
+
+<div class="col-lg-4">
+
+<div class="review-card">
+
+<img
+src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+class="img-fluid rounded-4 mb-4">
+
+<h4>Tenerife</h4>
+
+<p>
+
+1 club:<br>
+Costa Adeje
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL REVIEWS -->
+
+<div
+class="modal fade"
+id="reviewsModal">
+
+<div class="modal-dialog modal-lg modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Opinions verificades
+</h2>
+
+<div class="review-card">
+
+<h4>⭐⭐⭐⭐⭐ Marc Soler</h4>
+
+<p>
+
+“El millor gimnàs premium
+on he entrenat mai.”
+
+</p>
+
+</div>
+
+<div class="review-card mt-4">
+
+<h4>⭐⭐⭐⭐⭐ Júlia Costa</h4>
+
+<p>
+
+“Sembla un hotel 5 estrelles.”
+
+</p>
+
+</div>
+
+<div class="review-card mt-4">
+
+<h4>⭐⭐⭐⭐⭐ Nil Casas</h4>
+
+<p>
+
+“La cartografia interactiva
+és espectacular.”
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL HOURS -->
+
+<div
+class="modal fade"
+id="hoursModal">
+
+<div class="modal-dialog modal-lg modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-body">
+
+<h2 class="mb-5">
+Accés Premium
+</h2>
+
+<div class="review-card">
+
+<p>
+
+Els clubs SPACE GYM
+estan oberts 24/7
+amb accés premium
+i servei VIP.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- MODAL TRAINER -->
+
+<div
+class="modal fade"
+id="trainerModal">
+
+<div class="modal-dialog modal-dialog-centered modal-lg">
+
+<div class="modal-content">
+
+<div class="modal-body p-5">
+
+<h2 class="mb-4">
+Reservar Entrenador Personal
+</h2>
+
+<form>
+
+<div class="mb-4">
+
+<label class="mb-2">
+Nom complet
+</label>
+
+<input
+type="text"
+class="form-control p-3"
+placeholder="Escriu el teu nom">
+
+</div>
+
+<div class="mb-4">
+
+<label class="mb-2">
+Correu electrònic
+</label>
+
+<input
+type="email"
+class="form-control p-3"
+placeholder="exemple@gmail.com">
+
+</div>
+
+<div class="mb-4">
+
+<label class="mb-2">
+Objectiu fitness
+</label>
+
+<select
+class="form-select p-3">
+
+<option>
+Hipertrofia
+</option>
+
+<option>
+Pèrdua de greix
+</option>
+
+<option>
+Wellness premium
+</option>
+
+<option>
+Rendiment esportiu
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<label class="mb-2">
+Missatge
+</label>
+
+<textarea
+class="form-control p-3"
+rows="5"
+placeholder="Explica què necessites..."></textarea>
+
+</div>
+
+<button
+type="button"
+class="hero-btn btn-main w-100"
+onclick="alert('Reserva enviada correctament!')">
+
+Enviar Reserva
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
