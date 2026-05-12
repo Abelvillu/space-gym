@@ -17,7 +17,93 @@ rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
 <style>
+/* CHATBOT */
 
+#chat-toggle{
+position:fixed;
+bottom:30px;
+right:30px;
+width:70px;
+height:70px;
+border-radius:50%;
+background:linear-gradient(135deg,#00c6ff,#7f39fb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.7rem;
+cursor:pointer;
+z-index:99999;
+box-shadow:0 0 25px rgba(0,198,255,.5);
+}
+
+#chat-box{
+position:fixed;
+bottom:120px;
+right:30px;
+width:370px;
+background:#051030;
+border-radius:30px;
+overflow:hidden;
+display:none;
+z-index:99999;
+box-shadow:0 0 40px rgba(0,0,0,.5);
+}
+
+#chat-header{
+padding:20px;
+font-size:1.2rem;
+font-weight:700;
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+}
+
+#chat-messages{
+height:350px;
+overflow-y:auto;
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.bot-message,
+.user-message{
+padding:15px;
+border-radius:20px;
+max-width:85%;
+line-height:1.6;
+}
+
+.bot-message{
+background:#020617;
+align-self:flex-start;
+}
+
+.user-message{
+background:#2563eb;
+align-self:flex-end;
+}
+
+#chat-input-area{
+display:flex;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+#chat-input{
+flex:1;
+padding:18px;
+border:none;
+outline:none;
+background:#020617;
+color:white;
+}
+
+#chat-input-area button{
+border:none;
+padding:18px 25px;
+background:linear-gradient(90deg,#00c6ff,#7f39fb);
+color:white;
+font-weight:700;
+}
 *{
 margin:0;
 padding:0;
@@ -1154,6 +1240,114 @@ Enviar Reserva
 </div>
 <script
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- CHATBOT BUTTON -->
 
+<div id="chat-toggle">
+    <i class="fa-solid fa-comment"></i>
+</div>
+
+<!-- CHATBOT -->
+
+<div id="chat-box">
+
+    <div id="chat-header">
+        SPACE GYM Support
+    </div>
+
+    <div id="chat-messages">
+
+        <div class="bot-message">
+            👋 Hola! Benvingut a SPACE GYM.<br>
+            Com et podem ajudar?
+        </div>
+
+    </div>
+
+    <div id="chat-input-area">
+
+        <input
+        type="text"
+        id="chat-input"
+        placeholder="Escriu un missatge...">
+
+        <button onclick="sendMessage()">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const toggle=document.getElementById("chat-toggle");
+const chatBox=document.getElementById("chat-box");
+
+toggle.onclick=()=>{
+chatBox.style.display=
+chatBox.style.display==="block"
+? "none"
+: "block";
+}
+
+function sendMessage(){
+
+const input=document.getElementById("chat-input");
+const messages=document.getElementById("chat-messages");
+
+const text=input.value.trim();
+
+if(text==="") return;
+
+messages.innerHTML += `
+<div class="user-message">
+${text}
+</div>
+`;
+
+input.value="";
+
+let response="";
+
+const lower=text.toLowerCase();
+
+if(lower.includes("plans")){
+response="💎 Tenim plans Premium des de 24,99€ i VIP Luxury per 49,99€.";
+}
+
+else if(lower.includes("horari")){
+response="🕒 Els clubs SPACE GYM estan oberts 24/7.";
+}
+
+else if(lower.includes("spa")){
+response="🧖 Disposem de spa luxury, saunes i recovery premium.";
+}
+
+else if(lower.includes("club")){
+response="📍 Actualment tenim clubs a Barcelona, Madrid i Tenerife.";
+}
+
+else if(lower.includes("trainer")){
+response="🏋️ Pots reservar entrenador personal premium des de la secció Plans.";
+}
+
+else{
+response="✨ El nostre equip et respondrà aviat. Gràcies per contactar SPACE GYM.";
+}
+
+setTimeout(()=>{
+
+messages.innerHTML += `
+<div class="bot-message">
+${response}
+</div>
+`;
+
+messages.scrollTop=messages.scrollHeight;
+
+},700);
+
+}
+
+</script>
 </body>
 </html>
