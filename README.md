@@ -1,9 +1,10 @@
 ## Millores aplicades a la segona convocatòria
 
-- S'ha afegit una visualització cartogràfica exportada amb qgis2web.
-- S'han creat popups amb nom, ciutat, adreça i serveis dels clubs.
-- S'ha afegit cerca, geolocalització i eines interactives al mapa.
-- S'ha corregit la navegació responsive amb Bootstrap.
-- El logotip enllaça correctament amb l'inici.
-- S'ha afegit un botó per tornar a l'inici.
-<!-- - S'ha netejat el CSS i s'han eliminat errors d'estructura HTML. -->
+* Integració d'un mapa interactiu exportat amb qgis2web.
+* Implementació de popups amb informació dels clubs.
+* Afegida cerca, geolocalització i eines interactives al mapa.
+* Millora de la navegació amb Bootstrap.
+* Implementació de menú hamburguesa responsive.
+* Correcció dels enllaços interns i del logotip.
+* Adaptació responsive per a dispositius mòbils.
+* Reorganització i correcció de l'estructura HTML.
